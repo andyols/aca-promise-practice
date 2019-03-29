@@ -11,14 +11,20 @@ class Users extends Component {
 
   render() {
     const users = this.props.users.map(user => (
-      <div key={user.id} className="col">
+      <div key={user.id} className="column" style={{ marginTop: '2rem' }}>
         <div className="ui cards">
           <div className="card">
             <div className="content">
               <div className="header">{user.name}</div>
               <div className="meta">{user.username}</div>
               <div className="meta">{user.email}</div>
-              <div className="meta">{user.website}</div>
+              <div className="meta">
+                <a href="/">{user.website}</a>
+              </div>
+            </div>
+            <div className="ui bottom attached button">
+              <i className="add icon" />
+              Add Friend
             </div>
           </div>
         </div>
@@ -32,9 +38,9 @@ class Users extends Component {
             Get Users
           </Button>
         </div>
-        <div className="ui container" style={{ marginTop: '20px' }}>
-          <div className="ui three column centered grid">
-            <div className="row">{users}</div>
+        <div className="ui container">
+          <div className="ui centered grid">
+            <div className="five column row">{users}</div>
           </div>
         </div>
       </Fragment>
