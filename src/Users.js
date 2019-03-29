@@ -1,19 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import { Button } from '@material-ui/core'
+import { connect } from 'react-redux'
 
 class Users extends Component {
-  state = {
-    users: []
-  }
-
   getUsers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(users => this.setState({ users }))
+      .then(users => this.props.setUsers(users))
   }
 
   render() {
-    const users = this.state.users.map(user => (
+    const users = this.props.users.map(user => (
       <div key={user.id} className="col">
         <div className="ui cards">
           <div className="card">
@@ -45,4 +42,15 @@ class Users extends Component {
   }
 }
 
-export default Users
+const mapStateToProps = state => ({
+  users: state.users
+})
+
+const mapDispatchToProps = dispatch => ({
+  setUsers: users => dispatch({ type: 'SET_USERS', value: users })
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Users)

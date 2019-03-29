@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import './App.css';
-import Users from './Users';
-import UsersCount from './UsersCount';
+import React, { Component } from 'react'
+import './App.css'
+import Users from './Users'
+import UsersCount from './UsersCount'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Users />
         <UsersCount />
+        <Users />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
